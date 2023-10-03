@@ -1,0 +1,50 @@
+.areaCategoria {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.areaCategoria__areaTabela {
+    margin-top: 10px;
+    background-color: #fff;
+    width: 800px;
+    height: 250px;
+}
+
+.areaCategoria__areaDados {
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+
+}
+
+
+.areaCategoria__areaDados__areaCadastro__areaInput {
+    display: flex;
+    justify-content: end;
+}
+
+
+.areaCategoria__areaDados__areaCadastro__areaInput__ID {
+    display: flex;
+    align-items: center;
+    margin-left: 39px;
+    margin-right: 5px;
+    
+
+}
+
+.areaCategoria__areaDados__areaCadastro__areaInput__NOME {
+    display: flex;
+    align-items: center;
+    margin-right: 5px;
+    
+
+}
+
+.areaCategoria__areaDados__areaAlteracoes__botoes {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}

@@ -1,0 +1,43 @@
+.mesa-main{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    
+}
+.mesa-tabela{
+    margin-top: 10px;
+    background-color: #fff;
+    width: 800px;
+    height: 250px;
+}
+.mesa-cadastrOpcoes{
+    margin-top: 10px;
+    display: flex;
+    gap: 400px;
+}
+.mesa-cadastrOpcoes input[type="text"] {
+    text-align: center;
+    margin-left: 10px;
+    width: 70px;
+    height: 32px;
+}
+.mesa-cadastrOpcoes-esquerda{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.mesa-cadastrOpcoes-esquerda span{
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.mesa-cadastrOpcoes h2{
+    font-size: 35px;
+}
+.mesa-cadastrOpcoes-direita{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}

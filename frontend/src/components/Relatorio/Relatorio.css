@@ -1,0 +1,71 @@
+/* ----------- main -----------*/
+.relatorio-main {
+    /* background: url("./images/grafico.jpg") left bottom no-repeat; OUTRA FORMA*/
+    /* background-size: contain OU cover; È posicionado automaticamente de acordo com a div*/
+    background-image: url("./images/digitalmenu.png"), url("./images/grafico.jpg");
+    background-position: right bottom, left bottom;
+    background-size: 100px, cover;
+    background-repeat: no-repeat;
+
+    height: 645px;
+    border-radius: 10px;
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* ----------- Superior ----------- */
+
+.relatorio-topo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 1000px;
+    height: auto;
+
+}
+
+.text-topRelatorio {
+    font-size: 20px;
+    text-align: center;
+    color: white;
+
+}
+
+.relatorio-tabelaSup {
+    background-color: #ffffff;
+    width: 800px;
+    height: 150px;
+}
+
+/* ----------- Inferior -----------*/
+
+.relatorio-below {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5px;
+    text-align: center;
+    width: 1000px;
+    height: auto;
+}
+
+
+.relatorio-tabelaInf {
+    background-color: #ffffff;
+    width: 800px;
+    height: 250px;
+
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+/* POP UP */
+
+.tituloPopUp {
+    display: flex;
+    justify-content: center;
+}

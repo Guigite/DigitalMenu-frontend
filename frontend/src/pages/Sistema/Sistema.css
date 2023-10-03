@@ -1,0 +1,262 @@
+.sistema {
+    background-color: #ffffff;
+    display: grid;
+
+    grid-template-columns: 250px 1fr 1fr 1fr 1fr;
+    grid-template-rows: 60px 320px 320px;
+
+    border-radius: 10px;
+    border-color: #D3A741;
+    Gap: 5px 5px;
+
+
+
+}
+
+/* ----  MARCAÇÔES GLOBAIS ---- (alteram todo o front end)*/
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.digitalMenu {
+    color: white;
+    text-decoration: none;
+
+}
+
+.color-secondary {
+    color: #ffb300;
+}
+
+.laranja{
+    background:#ffb300;
+}
+
+.marrom {
+    background: rgba(80, 36, 34, 0.215);
+}
+
+
+.fade {
+    background: linear-gradient(to bottom right, #ff0000, #9f41078b);
+}
+
+.fade2 {
+    background: linear-gradient(to bottom left, #fc0000bf, #f8dc03ce);
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+}
+
+
+body {
+    font-family: "Open Sans", sans-serif;
+    color: black;
+    line-height: 1.6;
+    background: #ccc;
+}
+
+ul {
+    list-style: none;
+}
+
+header {
+    margin-bottom: 0px;
+}
+
+footer {
+    margin-top: 0px;
+}
+
+main {
+    padding: 0px;
+}
+
+.centralizaGlobal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.font-sistema{
+    color: white;
+    font-size: 10px;
+}
+
+.font-sistema-span{
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.font-opcoes-sistema{
+    color: white;
+    font-size: 30px;
+}
+
+.btn-sistema {
+    border: 0;
+    border-radius: 12px;
+    color: #ffffff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: -apple-system, system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 2.5;
+    outline: transparent;
+    padding: 0 1rem;
+    text-align: center;
+    user-select: none;
+    -webkit-user-select: none;
+
+
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
+.btn-sistema:hover {
+    box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5), -.125rem -.125rem 1rem rgb(60, 57, 57), .125rem .125rem 1rem rgba(255, 154, 90, 0.5);
+}
+
+.btn-sistema:active {
+    opacity: 0.8;
+}
+
+/* PAGINAS  */
+
+.pag-titulo-sistema{
+    color: white;
+    margin-top: 10px;
+    margin-left: 1em;
+    margin-right: 1em;
+    margin-bottom: 10px;
+    padding: 10px;
+    padding-left: 1em;
+    padding-right: 1em;
+    border-radius: 20px;
+}
+
+.txt-pesquisar-sistema {
+    color: white;
+    text-align: center;
+}
+
+
+
+/* --------------  LATERAL TOPO (logo digitalmenu) --------------*/
+
+.logo1 {
+    background-color: #6A6A6A;
+    border-radius: 10px;
+    grid-column: 1/2;
+    ;
+}
+
+/* --------------  LATERAL --------------*/
+.barra-lateral {
+    display: grid;
+    background-color: #6A6A6A;
+    grid-row: 2/4;
+
+    border-radius: 10px;
+}
+
+.botoes-barraLateral {
+    display: grid;
+
+    height: 95%;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+}
+
+
+.btn-direciona {
+
+    color: white;
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+    border-style: none;
+    font-size: 32px;
+    font-weight: bold;
+
+    margin-bottom: 8px;
+
+
+    outline: none;
+    cursor: pointer;
+    border: none;
+    font-size: 24px;
+    color: white;
+}
+
+.btn-direciona:hover {
+    transform: translateY(3px);
+    box-shadow: none;
+}
+
+.btn-direciona:active {
+    opacity: 0.5;
+}
+
+.img-botoes {
+
+    margin: 0px;
+    margin-left: 10px;
+    width: 40px;
+}
+
+
+/* -------------- SUPERIOR --------------*/
+.barra-superior {
+    background-color: #6A6A6A;
+    display: flex;
+    justify-content: flex-end;
+    border-radius: 10px;
+
+    grid-column: 2/6;
+
+}
+
+.usuario {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    text-align: right;
+
+    color: white;
+    font-size: 12px;
+}
+
+.img-usuario {
+    margin-left: 10px;
+    width: 52px;
+}
+
+
+/* -------------- PRINCIPAL --------------*/
+.container-principal {
+    border-radius: 10px;
+    background-color: #6A6A6A;
+    grid-column: 2/6;
+    grid-row: 2/4;
+
+}
+
+.conteudo{
+    display: none;
+}
+
+.show-conteudo{
+    display: block;
+}

@@ -1,0 +1,69 @@
+
+.Pedidos-tabela{
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    background-color: #fff;
+    width: 800px;
+    height: 250px;
+}
+.final{
+    display: flex;
+    gap: 50px;
+    
+    
+}
+.final-divisao{
+    display: flex;
+    gap: 30px;
+}
+.final-divisao-esquerda{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+.final-divisao-esquerda-interna{
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 3px;
+}
+.final-divisao-esquerda-interna input[type="text"]{
+    margin-left: 10px;
+    width: 120px;
+    height: 20px;
+    
+}
+
+.final-divisao-esquerda input[type="text"] {
+    margin-left: 10px;
+    width: 120px;
+    height: 20px;
+    
+}
+.Dados-margem{
+    margin-right: 250px;
+}
+.id-margem{
+    margin-left: 23px;
+}
+.status-margem{
+    margin-left: -7px;
+}
+.data-margem{
+    margin-left: 13px;
+}
+.final-divisao-direita{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;    
+
+}
+.opcoes-margem{
+    margin-left: 68px;
+}
