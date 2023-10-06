@@ -1,25 +1,10 @@
 import { createContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../api";
-import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import {createNotification} from '../util/toastify';
 export const MainContext = createContext({});
 
-function avisoSucesso(mensagem){
-    toast.success(mensagem,{
-        theme: "light",
-        position: toast.POSITION.TOP_CENTER,
-        limit : 1
-    })
-}
-
-function avisoDeErro(mensagem){
-    toast.error(mensagem,{
-        theme: "light",
-        position: toast.POSITION.TOP_CENTER,
-        limit:1
-    })
-}
 
 // ------------------------- Provedor Principal ------------------------- //
 
@@ -56,12 +41,12 @@ function MainProvider({ children }) {
             // Verifica se a conversão foi bem-sucedida
             if (isNaN(idMesa)) {
                 console.error("Número inválido");
-                avisoDeErro("Número inválido");
+                createNotification("Número inválido", 'error');
                 return; // Retorna para evitar a chamada da API com um número inválido
             }
         } else {
             console.error("Número inválido");
-            avisoDeErro("Número inválido");
+            createNotification("Número inválido", 'error');
             return; // Retorna para evitar a chamada da API com um número inválido
         }
     
@@ -69,11 +54,11 @@ function MainProvider({ children }) {
             const { data } = await api.post("/mesa", { idMesa });
             // Realiza o redirecionamento após o sucesso da chamada da API
             console.log("Mesa criada com sucesso id da mesa:"+ idMesa);
-            avisoSucesso("Mesa cadastrada com sucesso!");
+            createNotification("Mesa cadastrada com sucesso!", 'success');
             navigate("/sistema");
         } catch (e) {
             console.error("Erro ao cadastrar mesa:", e);
-            avisoDeErro("Erro ao cadastrar mesa");
+            createNotification("Erro ao cadastrar mesa", 'error');
         }
     }
 
@@ -87,23 +72,23 @@ function MainProvider({ children }) {
             // Verifica se a conversão foi bem-sucedida
             if (isNaN(idMesa)) {
                 console.error("Número inválido");
-                avisoDeErro("Erro ao desativar a mesa");
+                createNotification("Erro ao desativar a mesa", 'error');
                 return; // Retorna para evitar a chamada da API com um número inválido
             }
         } else {
             console.error("Número inválido");
-            avisoDeErro("Erro ao desativar a mesa");
+            createNotification("Erro ao desativar a mesa", 'error')         
             return; // Retorna para evitar a chamada da API com um número inválido
         }
     
         try {
             const { data } = await api.delete(`/mesa/${idMesa}`);
             console.log("Mesa deletada: " + idMesa);
-            avisoSucesso("Mesa desativada com sucesso!");
+            createNotification("Mesa desativada com sucesso!", 'success');
             navigate("/sistema");
         } catch (e) {
             console.error("Erro ao deletar mesa:", e);
-            avisoDeErro("Erro ao desativar a mesa");
+            createNotification("Erro ao desativar a mesa", 'error')
         }
     }
 
@@ -116,22 +101,22 @@ function MainProvider({ children }) {
     
             // Verifica se a conversão foi bem-sucedida
             if (isNaN(idMesa)) {
-                avisoDeErro("Erro ao ativar a mesa");
+                createNotification("Erro ao ativar a mesa", 'error')
                 return; // Retorna para evitar a chamada da API com um número inválido
             }
         } else {
-            avisoDeErro("Erro ao ativar a mesa");
+            createNotification("Erro ao ativar a mesa", 'error')
             return; // Retorna para evitar a chamada da API com um número inválido
         }
     
         try {
             const { data } = await api.put(`/mesa/${idMesa}`);
             console.log("Mesa ativada: " + idMesa);
-            avisoSucesso("Mesa ativada com sucesso!");
+            createNotification("Mesa ativada com sucesso!", 'success');
             navigate("/sistema");
         } catch (e) {
             console.error("Erro ao ativar mesa:", e);
-            avisoDeErro("Erro ao ativar a mesa");
+            createNotification("Erro ao ativar a mesa", 'error')
         }
     }
   
@@ -145,11 +130,11 @@ function MainProvider({ children }) {
         try{
             const { data } = await api.post("/register", {nome, senha});
                 console.log("Usuario cadastrado com sucesso!");
-                avisoSucesso("Usuario cadastrado com sucesso!");
+                createNotification("Usuario cadastrado com sucesso!", 'success');
                 navigate("/sistema");
         }catch(e){
                 console.error("Erro ao cadastrar usuario!");
-                avisoDeErro("Erro ao cadastrar usuario!");
+                createNotification("Erro ao cadastrar usuario!", 'error');
         }
     }  
 
@@ -163,17 +148,18 @@ function MainProvider({ children }) {
 
         try {
             const { data } = await api.post("/login", { nome, senha });
+            
             localStorage.setItem("chave",data.token);
             localStorage.setItem("usuario", nome);
             api.defaults.headers.Authorization = `Bearer ${data.token}`;
             setValido(true);
-            avisoSucesso("Seja bem vindo!");
+            createNotification("Seja bem vindo!", 'success');
             // Redireciona explicitamente para a página do sistema após o login
             navigate("/sistema", { replace: true }); // Use 'replace: true' para substituir a entrada do histórico
             // Agora, atualize a página atual no localStorage
             localStorage.setItem("currentPage", "/sistema");
         } catch (e) {
-            avisoDeErro("Erro no Login");
+            createNotification("Erro no login", 'error');
             console.log("Erro na autenticação" + e);
         }
     }
@@ -188,7 +174,7 @@ function MainProvider({ children }) {
                 navigate("/sistema");
             } catch (e) {
                 console.log("Erro na autenticação" + e);
-                avisoDeErro("Erro na autenticação")
+                createNotification("Erro na autenticacao!", 'error');
             }
         }
 
@@ -198,7 +184,7 @@ function MainProvider({ children }) {
                 return data
             }catch(e){
                 console.log(e)
-                avisoDeErro("Erro na tabela");
+                createNotification("Erro na tabela", 'error');
             }
         }
 
