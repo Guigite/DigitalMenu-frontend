@@ -8,7 +8,16 @@ export const MainContext = createContext({});
 function avisoSucesso(mensagem){
     toast.success(mensagem,{
         theme: "light",
-        position: toast.POSITION.BOTTOM_CENTER
+        position: toast.POSITION.TOP_CENTER,
+        limit : 1
+    })
+}
+
+function avisoDeErro(mensagem){
+    toast.error(mensagem,{
+        theme: "light",
+        position: toast.POSITION.TOP_CENTER,
+        limit:1
     })
 }
 
@@ -47,12 +56,12 @@ function MainProvider({ children }) {
             // Verifica se a conversão foi bem-sucedida
             if (isNaN(idMesa)) {
                 console.error("Número inválido");
-                toast.error("Número inválido");
+                avisoDeErro("Número inválido");
                 return; // Retorna para evitar a chamada da API com um número inválido
             }
         } else {
             console.error("Número inválido");
-            toast.error("Número inválido");
+            avisoDeErro("Número inválido");
             return; // Retorna para evitar a chamada da API com um número inválido
         }
     
@@ -64,7 +73,7 @@ function MainProvider({ children }) {
             navigate("/sistema");
         } catch (e) {
             console.error("Erro ao cadastrar mesa:", e);
-            toast.error("Erro ao cadastrar mesa");
+            avisoDeErro("Erro ao cadastrar mesa");
         }
     }
 
@@ -78,12 +87,12 @@ function MainProvider({ children }) {
             // Verifica se a conversão foi bem-sucedida
             if (isNaN(idMesa)) {
                 console.error("Número inválido");
-                toast.error("Erro ao desativar a mesa");
+                avisoDeErro("Erro ao desativar a mesa");
                 return; // Retorna para evitar a chamada da API com um número inválido
             }
         } else {
             console.error("Número inválido");
-            toast.error("Erro ao desativar a mesa");
+            avisoDeErro("Erro ao desativar a mesa");
             return; // Retorna para evitar a chamada da API com um número inválido
         }
     
@@ -94,7 +103,7 @@ function MainProvider({ children }) {
             navigate("/sistema");
         } catch (e) {
             console.error("Erro ao deletar mesa:", e);
-            toast.error("Erro ao desativar a mesa");
+            avisoDeErro("Erro ao desativar a mesa");
         }
     }
 
@@ -107,11 +116,11 @@ function MainProvider({ children }) {
     
             // Verifica se a conversão foi bem-sucedida
             if (isNaN(idMesa)) {
-                toast.error("Erro ao ativar a mesa");
+                avisoDeErro("Erro ao ativar a mesa");
                 return; // Retorna para evitar a chamada da API com um número inválido
             }
         } else {
-            toast.error("Erro ao ativar a mesa");
+            avisoDeErro("Erro ao ativar a mesa");
             return; // Retorna para evitar a chamada da API com um número inválido
         }
     
@@ -122,7 +131,7 @@ function MainProvider({ children }) {
             navigate("/sistema");
         } catch (e) {
             console.error("Erro ao ativar mesa:", e);
-            toast.error("Erro ao ativar a mesa");
+            avisoDeErro("Erro ao ativar a mesa");
         }
     }
   
@@ -140,7 +149,7 @@ function MainProvider({ children }) {
                 navigate("/sistema");
         }catch(e){
                 console.error("Erro ao cadastrar usuario!");
-                toast.error("Erro ao cadastrar usuario!");
+                avisoDeErro("Erro ao cadastrar usuario!");
         }
     }  
 
@@ -164,7 +173,7 @@ function MainProvider({ children }) {
             // Agora, atualize a página atual no localStorage
             localStorage.setItem("currentPage", "/sistema");
         } catch (e) {
-            toast.error("Erro no Login");
+            avisoDeErro("Erro no Login");
             console.log("Erro na autenticação" + e);
         }
     }
@@ -179,6 +188,7 @@ function MainProvider({ children }) {
                 navigate("/sistema");
             } catch (e) {
                 console.log("Erro na autenticação" + e);
+                avisoDeErro("Erro na autenticação")
             }
         }
 
@@ -188,6 +198,7 @@ function MainProvider({ children }) {
                 return data
             }catch(e){
                 console.log(e)
+                avisoDeErro("Erro na tabela");
             }
         }
 
