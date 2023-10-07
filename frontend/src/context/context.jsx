@@ -125,7 +125,15 @@ function MainProvider({ children }) {
             toast.error("Erro ao ativar a mesa");
         }
     }
-  
+    
+    async function listarMesas(){
+        try{
+            const { data } =  await api.get("/mesa/todas-mesas")
+            return data
+        }catch(e){
+            console.log(e)
+        }
+    }
 // ------------------------- Usuário ------------------------- //
 
      async function cadastraUser(e, nome, senha){
@@ -179,15 +187,6 @@ function MainProvider({ children }) {
                 navigate("/sistema");
             } catch (e) {
                 console.log("Erro na autenticação" + e);
-            }
-        }
-
-        async function listarMesas(){
-            try{
-                const { data } =  await api.get("/mesa/todas-mesas")
-                return data
-            }catch(e){
-                console.log(e)
             }
         }
 
