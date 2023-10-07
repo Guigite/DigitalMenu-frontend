@@ -119,7 +119,15 @@ function MainProvider({ children }) {
             createNotification("Erro ao ativar a mesa", 'error')
         }
     }
-  
+    
+    async function listarMesas(){
+        try{
+            const { data } =  await api.get("/mesa/todas-mesas")
+            return data
+        }catch(e){
+            console.log(e)
+        }
+    }
 // ------------------------- Usuário ------------------------- //
 
      async function cadastraUser(e, nome, senha){
@@ -178,15 +186,6 @@ function MainProvider({ children }) {
             }
         }
 
-        async function listarMesas(){
-            try{
-                const { data } =  await api.get("/mesa/todas-mesas")
-                return data
-            }catch(e){
-                console.log(e)
-                createNotification("Erro na tabela", 'error');
-            }
-        }
 
 // ------------------------- Token ------------------------- //
     function validaToken() {

@@ -2,6 +2,7 @@ import { useState, useContext, useEffect} from 'react';
 import './Mesa.css';
 import { MainContext } from '../../context/context';
 import { toast, ToastContainer } from 'react-toastify';
+import { DataGrid } from '@mui/x-data-grid';
 
 
 
@@ -10,14 +11,37 @@ function Mesa() {
 
     const {cadastrarMesa, deletarMesa, ativarMesa, listarMesas} = useContext(MainContext);
 
-    const [mesas, setMesas] = useState("")
+    const [mesas, setMesas] = useState([])
     const [idMesa, setIdMesa] = useState("");
 
     useEffect(() => {
-        listarMesas().then((comp) => {
-          setMesas(comp);
+        listarMesas().then((resp) => {
+          setMesas(resp);
         });
-      });
+      }), [];
+      
+      const colunmMesa = [
+        {
+            field: "idmesa",
+            headerName: "Número da Mesa",
+            flex: 0.2,
+            minWidth: 210,
+            hideable: false,
+            renderHeader: (params) => <strong>{params.colDef.headerName}</strong>,
+          },
+          {
+            field: "status",
+            headerName: "Status da Mesa",
+            flex: 0.2,
+            minWidth: 210,
+            hideable: false,
+            renderHeader: (params) => <strong>{params.colDef.headerName}</strong>,
+          },
+    ]
+
+    const getRowId = (row) => {
+        return row.idmesa;
+      };
 
     return (
         <>
@@ -31,7 +55,18 @@ function Mesa() {
                     <button className='btn-sistema laranja'>Todos</button>
                 </div>
                 <div className="mesa-tabela">
-                    {JSON.stringify(mesas)}
+                    {/* {JSON.stringify(mesas)} */}
+                    <DataGrid
+                        columns={colunmMesa}
+                        rows={mesas}
+                        getRowId={getRowId}
+                        initialState={{
+                            pagination: {
+                              paginationModel: { page: 0, pageSize: 5 },
+                            },
+                          }}
+                          pageSizeOptions={[5, 10]}
+                    />
                 </div>
                 <div className="mesa-cadastrOpcoes">
                     <div className="mesa-cadastrOpcoes-esquerda">
