@@ -1,6 +1,5 @@
 import './Usuarios.css';
 import { MainContext } from '../../context/context';
-import { toast, ToastContainer } from 'react-toastify';
 import { useState, useContext } from 'react';
 
 function Usuarios() {
@@ -72,20 +71,6 @@ function Usuarios() {
                     </div>
                 </div>
             </main>
-
-            <ToastContainer
-            position="bottom-center"
-            autoClose={5000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick={false}
-            rtl={false}
-            pauseOnFocusLoss={false}
-            draggable
-            pauseOnHover={false}
-            theme="light"
-            />
-
         </>
     )
 }

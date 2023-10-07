@@ -105,18 +105,7 @@ function Mesa() {
                 </div>
 
             </div>
-            <ToastContainer
-            position="bottom-center"
-            autoClose={5000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick={false}
-            rtl={false}
-            pauseOnFocusLoss={false}
-            draggable
-            pauseOnHover={false}
-            theme="light"
-            />
+           
         </>
     )
 
