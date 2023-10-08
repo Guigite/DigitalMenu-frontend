@@ -18,7 +18,7 @@ function Mesa() {
         listarMesas().then((resp) => {
           setMesas(resp);
         });
-      }), [idMesa];
+      }, [idMesa]);
       
       const colunmMesa = [
         {

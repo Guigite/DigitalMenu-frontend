@@ -1,28 +1,86 @@
+import { useContext, useEffect, useState } from 'react';
+import { MainContext } from '../../context/context';
+import { DataGrid } from '@mui/x-data-grid';
+import localePTBR from '../../util/locale';
 import './Pedidos.css'
 
 function Pedidos() {
+    
+    const {listarPedidos} = useContext(MainContext);
+    
+    const [pedidios, setPedidos] = useState([]);
+    
+    useEffect(() => {
+        listarPedidos().then((resp) => {
+          setPedidos(resp);
+        });
+      }, []);
+    
+    const colunmPedidos = [
+        {
+            field: "idpedido",
+            headerName: "ID Pedido",
+            minWidth: 100,
+            hideable: false,
+            renderHeader: (params) => <strong>{params.colDef.headerName}</strong>
+        },
+        {
+            field: "total",
+            headerName: "Total",
+            minWidth: 100,
+            hideable: false,
+            renderHeader: (params) => <strong>{params.colDef.headerName}</strong>
+        },
+        {
+            field: "data",
+            headerName: "Data",
+            minWidth: 130,
+            hideable: false,
+            renderHeader: (params) => <strong>{params.colDef.headerName}</strong>
+        },
+        {
+            field: "status",
+            headerName: "Status do Pedido",
+            minWidth: 200,
+            hideable: false,
+            renderHeader: (params) => <strong>{params.colDef.headerName}</strong>
+        },
+        {
+            field: "id_mesa",
+            headerName: "Pedido da Mesa:",
+            minWidth: 200,
+            hideable: false,
+            renderHeader: (params) => <strong>{params.colDef.headerName}</strong>
+        }
+    ]
+
+    const getRowId = (row) => {
+        return row.idpedido;
+      };
+    
     return (
     <>
         <main className='usuario-completo'>
             <div >
                 <h1 className='pag-titulo-sistema fade2'>Pedidos</h1>
             </div>
-            
-            <div>
-                <button className='btn-sistema laranja'>ID</button>
-                <button className='btn-sistema laranja'>Mesa</button>
-                <button className='btn-sistema laranja'>Status</button>
-                <button className='btn-sistema laranja'>Total</button>
-                <button className='btn-sistema laranja'>Dia</button>
-                <button className='btn-sistema laranja'>Todos</button>
-                <button className='btn-sistema laranja'>Data</button>
-            </div>
             <div className='Pedidos-tabela'>
-                <h2></h2>
+                <DataGrid
+                    columns={colunmPedidos}
+                    rows={pedidios}
+                    getRowId={getRowId}
+                    initialState={{
+                        pagination: {
+                            paginationModel: { page: 0, pageSize: 5 },
+                        },
+                        }}
+                    pageSizeOptions={[5, 10]}
+                    localeText={localePTBR}
+                />
             </div>
             <div className='Dados-margem'>
-                        <h2 className='font-opcoes-sistema'>Dados</h2>
-                    </div>
+                <h2 className='font-opcoes-sistema'>Dados</h2>
+            </div>
                     
             <div className="final">
                 <section className="final-divisao">

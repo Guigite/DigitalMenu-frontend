@@ -13,7 +13,7 @@ function Categoria() {
         listarCategorias().then((resp) =>{
             setCategorias(resp);
         });
-    },[idCategoria]);
+    },[]);
 
     const colunmCategorias=[
         {
@@ -65,9 +65,7 @@ function Categoria() {
                             pageSizeOptions={[5, 10]}
                             localeText={localePTBR}
                     />
-
                     </div>
-
                     <div className="areaCategoria__areaDados">
                         <div className="areaCategoria__areaDados__areaCadastro">
                             <h2 className="font-opcoes-sistema">Cadastrar Categoria</h2>
@@ -87,7 +85,6 @@ function Categoria() {
                                 <button className="btn-sistema laranja">Deletar</button>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
