@@ -20,7 +20,14 @@ function MainProvider({ children }) {
 
 // ------------------------- Pedido ------------------------- //
 
-
+async function listarPedidos(){
+    try{
+        const { data } = await api.get("/pedidos/all")
+        return data
+    }catch(e){
+        console.log(e)
+    }
+}
 
 // ------------------------- Relatório ------------------------- //
 
@@ -28,6 +35,14 @@ function MainProvider({ children }) {
 
 // ------------------------- Produto ------------------------- //
 
+async function listarProdutos(){
+    try{
+        const { data } = await api.get("/produto")
+        return data
+    }catch(e){
+        console.log(e)
+    }
+}
 
 
 // ------------------------- Mesa ------------------------- //
@@ -225,16 +240,18 @@ function MainProvider({ children }) {
     return (
         <MainContext.Provider
             value={{
-                autenticacaoAtendente,
+                valido,
                 autenticacaoMesa,
                 validaToken,
                 logout,
-                valido,
+                autenticacaoAtendente,
                 cadastrarMesa,
                 deletarMesa,
                 ativarMesa,
                 listarMesas,
                 cadastraUser,
+                listarPedidos,
+                listarProdutos,
             }}
         >
             {children}

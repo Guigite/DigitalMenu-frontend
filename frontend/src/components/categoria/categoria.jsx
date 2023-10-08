@@ -14,7 +14,7 @@ function Categoria() {
                     </div>
 
                     <div className="areaCategoria__areaTabela">
-
+                        
                     </div>
 
                     <div className="areaCategoria__areaDados">

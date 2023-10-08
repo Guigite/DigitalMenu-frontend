@@ -12,7 +12,7 @@ function Usuarios() {
         <>
 
             <main className='usuario-completo'>
-                <div>
+                {/* <div>
                     <h1 className='pag-titulo-sistema fade2'>Usuários</h1>
                     <h2 className='txt-pesquisar-sistema '>Pesquisar</h2>
                 </div>
@@ -69,7 +69,7 @@ function Usuarios() {
                         <button className='btn-sistema laranja'>Desativar</button>
 
                     </div>
-                </div>
+                </div> */}
             </main>
         </>
     )
