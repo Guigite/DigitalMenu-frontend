@@ -3,7 +3,7 @@ import './Mesa.css';
 import { MainContext } from '../../context/context';
 import { toast, ToastContainer } from 'react-toastify';
 import { DataGrid } from '@mui/x-data-grid';
-
+import localePTBR from '../../util/locale';
 
 
 
@@ -12,7 +12,7 @@ function Mesa() {
     const {cadastrarMesa, deletarMesa, ativarMesa, listarMesas} = useContext(MainContext);
 
     const [mesas, setMesas] = useState([])
-    const [idMesa, setIdMesa] = useState({});
+    const [idMesa, setIdMesa] = useState("");
 
     useEffect(() => {
         listarMesas().then((resp) => {
@@ -88,10 +88,11 @@ function Mesa() {
                         getRowId={getRowId}
                         initialState={{
                             pagination: {
-                              paginationModel: { page: 0, pageSize: 5 },
+                                paginationModel: { page: 0, pageSize: 5 },
                             },
-                          }}
-                          pageSizeOptions={[5, 10]}
+                            }}
+                        pageSizeOptions={[5, 10]}
+                        localeText={localePTBR}
                     />
                 </div>
                 <div className="mesa-cadastrOpcoes">
@@ -106,31 +107,33 @@ function Mesa() {
                             type="text" 
                         />
                         </span>
-                        <button className='btn-sistema laranja'
-                        onClick={(e)=> cadastrarMesa(e, idMesa)}
-                        >
-                            Cadastrar
-                        </button>
-                        <button className='btn-sistema laranja'
-                            onClick={(e)=> {
-                                setIdMesa(idMesa);
-                                // console.log(params.row.idmesa)
-                                console.log(idMesa)
-                                deletarMesa(e, idMesa);
-                            }}
-                        >
-                            Desativar
-                        </button>
-                        <button className='btn-sistema laranja'
-                            onClick={(e) => {
-                                setIdMesa(idMesa);
-                                // console.log(params.row.idmesa)
-                                console.log(idMesa)
-                                ativarMesa(e, idMesa) 
-                            }}
-                        >
-                            Ativar
-                        </button>
+                        <div className='botoes-acoes'>
+                            <button className='btn-sistema laranja'
+                            onClick={(e)=> cadastrarMesa(e, idMesa)}
+                            >
+                                Cadastrar
+                            </button>
+                            <button className='btn-sistema laranja'
+                                onClick={(e)=> {
+                                    setIdMesa(idMesa);
+                                    // console.log(params.row.idmesa)
+                                    console.log(idMesa)
+                                    deletarMesa(e, idMesa);
+                                }}
+                            >
+                                Desativar
+                            </button>
+                            <button className='btn-sistema laranja'
+                                onClick={(e) => {
+                                    setIdMesa(idMesa);
+                                    // console.log(params.row.idmesa)
+                                    console.log(idMesa)
+                                    ativarMesa(e, idMesa) 
+                                }}
+                            >
+                                Ativar
+                            </button>
+                        </div>
                     </div>
                     </div>
 
