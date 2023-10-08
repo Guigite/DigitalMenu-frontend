@@ -1,19 +1,70 @@
+import { useContext, useEffect, useState } from 'react';
 import './categoria.css';
+import { MainContext } from '../../context/context';
+import { DataGrid } from '@mui/x-data-grid';
+import localePTBR from '../../util/locale';
+
 function Categoria() {
+    const{listarCategorias} = useContext(MainContext);
+    const [categorias, setCategorias] = useState([]);
+    const[idCategoria,setIdCategoria] = useState("");
+
+    useEffect(() => {
+        listarCategorias().then((resp) =>{
+            setCategorias(resp);
+        });
+    },[idCategoria]);
+
+    const colunmCategorias=[
+        {
+            field:"idcategoria",
+            headerName: "ID Categoria",
+            flex: 0.2,
+            minWidht:210,
+            hideable:false,
+            renderHeader: (params) => <strong>{params.colDef.headerName}</strong>, 
+        },
+        {
+            field: "nome",
+            headerName: "Nome",
+            flex: 0.2,
+            minWidth: 210,
+            hideable: false,
+            renderHeader: (params) => <strong>{params.colDef.headerName}</strong>,   
+        },
+        {
+        field: "status",
+            headerName: "Status da Categoria",
+            flex: 0.2,
+            minWidth: 210,
+            hideable: false,
+            renderHeader: (params) => <strong>{params.colDef.headerName}</strong>,
+        },
+    ]
+
+    const getRowId = (row) =>{
+        return row.idcategoria
+    };
+
     return (
         <>
             <div className="categoria-main">
                 <div className="areaCategoria">
                     <h1 className="pag-titulo-sistema fade2">Categoria</h1>
                     <h2 className='txt-pesquisar-sistema'>Pesquisar</h2>
-                    <div className="areaCategoria__botoes">
-                        <button className="btn-sistema laranja">Id</button>
-                        <button className="btn-sistema laranja">Nome</button>
-                        <button className="btn-sistema laranja">Status</button>
-                        <button className="btn-sistema laranja">Todos</button>
-                    </div>
-
                     <div className="areaCategoria__areaTabela">
+                        <DataGrid
+                            columns={colunmCategorias}
+                            rows={categorias}
+                            getRowId={getRowId}
+                            initialState={{
+                                pagination: {
+                                    paginationModel: { page: 0, pageSize: 5 },
+                                },
+                                }}
+                            pageSizeOptions={[5, 10]}
+                            localeText={localePTBR}
+                    />
 
                     </div>
 

@@ -11,7 +11,7 @@ function Mesa() {
 
     const {cadastrarMesa, deletarMesa, ativarMesa, listarMesas} = useContext(MainContext);
 
-    const [mesas, setMesas] = useState([])
+    const [mesas, setMesas] = useState([]);
     const [idMesa, setIdMesa] = useState("");
 
     useEffect(() => {
