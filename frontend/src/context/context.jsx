@@ -15,7 +15,14 @@ function MainProvider({ children }) {
     const [valido, setValido] = useState(false);
 
 // ------------------------- Categoria ------------------------- //
-
+    async function listarCategorias(){
+        try{
+            const { data } =  await api.get("/categorias/listar")
+            return data
+        }catch(e){
+            console.log(e)
+        }
+    }
 
 
 // ------------------------- Pedido ------------------------- //
@@ -245,6 +252,7 @@ async function listarProdutos(){
                 validaToken,
                 logout,
                 autenticacaoAtendente,
+                listarCategorias,
                 cadastrarMesa,
                 deletarMesa,
                 ativarMesa,
