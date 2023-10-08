@@ -13,7 +13,7 @@ function Categoria() {
         listarCategorias().then((resp) =>{
             setCategorias(resp);
         });
-    }),[idCategoria];
+    },[idCategoria]);
 
     const colunmCategorias=[
         {
