@@ -13,9 +13,7 @@
 }
 .final{
     display: flex;
-    gap: 50px;
-    
-    
+    justify-content: center;
 }
 .final-divisao{
     display: flex;
@@ -28,11 +26,11 @@
     
 }
 .final-divisao-esquerda-interna{
-    
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 3px;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 10px;
 }
 .final-divisao-esquerda-interna input[type="text"]{
     margin-left: 10px;
@@ -48,7 +46,8 @@
     
 }
 .Dados-margem{
-    margin-right: 250px;
+    display: flex;
+    justify-content: center;
 }
 .id-margem{
     margin-left: 23px;

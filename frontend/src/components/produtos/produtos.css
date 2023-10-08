@@ -21,7 +21,6 @@
     display: grid;
     grid-template-columns: 100px 100px 150px 150px 150px 150px;
     grid-template-rows: 40px 60px 50px 50px;
-
     margin-top: 5px;
 }
 
@@ -29,10 +28,9 @@
 /* Topo */
 .opcoes-topo-prod-esquerda {
     display: flex;
-    align-items: end;
+    align-items: center;
     justify-content: center;
    /*  background-color: #fff30a; */
-
     grid-column: 1/4;
     grid-row: 1/2;
 }
@@ -184,6 +182,6 @@
     justify-content: center;
    /*  background-color: #3b0aff; */
 
-    grid-column: 1/4;
-    grid-row: 4/5;
+    /* grid-column: 1/4;
+    grid-row: 4/5; */
 }

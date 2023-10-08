@@ -7,7 +7,7 @@ import localePTBR from '../../util/locale';
 function Categoria() {
     const{listarCategorias} = useContext(MainContext);
     const [categorias, setCategorias] = useState([]);
-    const[idCategoria,setIdCategoria] = useState("");
+    // const[idCategoria,setIdCategoria] = useState("");
 
     useEffect(() => {
         listarCategorias().then((resp) =>{
@@ -51,7 +51,6 @@ function Categoria() {
             <div className="categoria-main">
                 <div className="areaCategoria">
                     <h1 className="pag-titulo-sistema fade2">Categoria</h1>
-                    <h2 className='txt-pesquisar-sistema'>Pesquisar</h2>
                     <div className="areaCategoria__areaTabela">
                         <DataGrid
                             columns={colunmCategorias}
