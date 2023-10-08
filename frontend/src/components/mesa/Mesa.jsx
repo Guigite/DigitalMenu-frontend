@@ -12,13 +12,13 @@ function Mesa() {
     const {cadastrarMesa, deletarMesa, ativarMesa, listarMesas} = useContext(MainContext);
 
     const [mesas, setMesas] = useState([])
-    const [idMesa, setIdMesa] = useState("");
+    const [idMesa, setIdMesa] = useState({});
 
     useEffect(() => {
         listarMesas().then((resp) => {
           setMesas(resp);
         });
-      }), [];
+      }), [idMesa];
       
       const colunmMesa = [
         {
@@ -37,6 +37,39 @@ function Mesa() {
             hideable: false,
             renderHeader: (params) => <strong>{params.colDef.headerName}</strong>,
           },
+        //   {
+        //     field: "actions",
+        //     headerName: "Ações",
+        //     type: "actions",
+        //     flex: 0.2,
+        //     minWidth: 210,
+        //     hideable: false,
+        //     renderCell: (params) => (
+        //         <div>
+        //             <button className='btn-sistema laranja'
+        //                 onClick={(e)=> {
+        //                     setIdMesa(params.row.idmesa);
+        //                     // console.log(params.row.idmesa)
+        //                     console.log(idMesa)
+        //                     deletarMesa(e, idMesa);
+        //                 }}
+        //             >
+        //             Desativar
+        //             </button>
+        //             <button className='btn-sistema laranja'
+        //                 onClick={(e) => {
+        //                     setIdMesa(params.row.idmesa);
+        //                     // console.log(params.row.idmesa)
+        //                     console.log(idMesa)
+        //                     ativarMesa(e, idMesa) 
+        //                 }}
+        //             >
+        //             Ativar
+        //             </button>
+        //         </div>
+        //     ),
+        //     renderHeader: (params) => <strong>{params.colDef.headerName}</strong>,
+        //   },
     ]
 
     const getRowId = (row) => {
@@ -48,14 +81,7 @@ function Mesa() {
 
             <div className="mesa-main">
                 <h1 className='pag-titulo-sistema fade2'>Mesas</h1>
-                <h2 className='txt-pesquisar-sistema'>Pesquisar</h2>
-                <div>
-                    <button className='btn-sistema laranja'>Status</button>
-                    <button className='btn-sistema laranja'>Número</button>
-                    <button className='btn-sistema laranja'>Todos</button>
-                </div>
                 <div className="mesa-tabela">
-                    {/* {JSON.stringify(mesas)} */}
                     <DataGrid
                         columns={colunmMesa}
                         rows={mesas}
@@ -70,7 +96,7 @@ function Mesa() {
                 </div>
                 <div className="mesa-cadastrOpcoes">
                     <div className="mesa-cadastrOpcoes-esquerda">
-                        <h2 className='font-opcoes-sistema'>Cadastrar Mesa</h2>
+                        <h2 className='font-opcoes-sistema'>Controle de Mesas</h2>
                         <span className='font-sistema-span'>Número da mesa: 
                             <input 
                             autoFocus
@@ -81,28 +107,32 @@ function Mesa() {
                         />
                         </span>
                         <button className='btn-sistema laranja'
-                        type='submit'
                         onClick={(e)=> cadastrarMesa(e, idMesa)}
                         >
                             Cadastrar
                         </button>
-                    </div>
-                    <div className="mesa-cadastrOpcoes-direita">
-                        <h2 className='font-opcoes-sistema'>Opções</h2>
                         <button className='btn-sistema laranja'
-                        type='submit'
-                        onClick={(e)=> deletarMesa(e, idMesa)}
+                            onClick={(e)=> {
+                                setIdMesa(idMesa);
+                                // console.log(params.row.idmesa)
+                                console.log(idMesa)
+                                deletarMesa(e, idMesa);
+                            }}
                         >
                             Desativar
                         </button>
                         <button className='btn-sistema laranja'
-                        type='submit'
-                        onClick={(e) => ativarMesa(e, idMesa)}
+                            onClick={(e) => {
+                                setIdMesa(idMesa);
+                                // console.log(params.row.idmesa)
+                                console.log(idMesa)
+                                ativarMesa(e, idMesa) 
+                            }}
                         >
                             Ativar
                         </button>
                     </div>
-                </div>
+                    </div>
 
             </div>
            
