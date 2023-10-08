@@ -54,10 +54,10 @@ const localePTBR = {
     filterPanelInputPlaceholder: 'Valor do filtro',
   
     // Filter operators text
-    filterOperatorContains: 'Contém',
-    filterOperatorEquals: 'Igual',
-    filterOperatorStartsWith: 'Começa com',
-    filterOperatorEndsWith: 'Termina com',
+    filterOperatorContains: 'contém',
+    filterOperatorEquals: 'igual',
+    filterOperatorStartsWith: 'começa com',
+    filterOperatorEndsWith: 'termina com',
     filterOperatorIs: 'é',
     filterOperatorNot: 'não é',
     filterOperatorAfter: 'está depois',
