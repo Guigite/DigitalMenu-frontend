@@ -37,7 +37,14 @@ async function listarPedidos(){
 }
 
 // ------------------------- Relatório ------------------------- //
-
+async function listarItensMaisVendidos(){
+    try{
+        const { data } = await api.get("/relatorio/itens/mais/vendidos")
+        return data
+    }catch(e){
+        console.log(e)
+    }
+}
 
 
 // ------------------------- Produto ------------------------- //
@@ -252,7 +259,6 @@ async function listarProdutos(){
                 validaToken,
                 logout,
                 autenticacaoAtendente,
-                listarCategorias,
                 cadastrarMesa,
                 deletarMesa,
                 ativarMesa,
@@ -260,6 +266,8 @@ async function listarProdutos(){
                 cadastraUser,
                 listarPedidos,
                 listarProdutos,
+                listarItensMaisVendidos,
+                listarCategorias,
             }}
         >
             {children}

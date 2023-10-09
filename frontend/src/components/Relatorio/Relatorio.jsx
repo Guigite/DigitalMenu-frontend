@@ -1,9 +1,14 @@
-import { useState } from 'react';
+import { useContext, useEffect,useState } from 'react';
 import { createPortal } from "react-dom";
 import { Modal } from '../modelPopUp/modal';
 import './relatorio.css';
+import { MainContext } from '../../context/context';
+import { DataGrid } from '@mui/x-data-grid';
+import localePTBR from '../../util/locale';
 
 function Relatorio() {
+    const {listarItensMaisVendidos} = useContext(MainContext);
+    const [data, setData] = useState([]);
     /* Abre o popup */
     const [modalOpen, setModalOpen] = useState(false);
     /* Recebe mensagem do model*/
@@ -14,6 +19,59 @@ function Relatorio() {
         setMessage(value)
     };
 
+    useEffect(() => {
+        listarItensMaisVendidos().then((resp) => {
+          setData(resp);
+        });
+      }, []);
+      
+      const colunmRelatorio = [
+        {
+            field: "idproduto",
+            headerName: "ID Produto",
+            flex: 0.2,
+            minWidth: 100,
+            hideable: false,
+            renderHeader: (params) => <strong>{params.colDef.headerName}</strong>,
+          },
+          {
+            field: "nome",
+            headerName: "Nome",
+            flex: 0.2,
+            minWidth: 100,
+            hideable: false,
+            renderHeader: (params) => <strong>{params.colDef.headerName}</strong>,
+          },
+          {
+            field: "preco",
+            headerName: "Preço",
+            flex: 0.2,
+            minWidth: 50,
+            hideable: false,
+            renderHeader: (params) => <strong>{params.colDef.headerName}</strong>,
+          },
+          {
+            field: "qtdeTotal",
+            headerName: "Quantidade Vendida",
+            flex: 0.2,
+            minWidth: 200,
+            hideable: false,
+            renderHeader: (params) => <strong>{params.colDef.headerName}</strong>,
+          },
+          {
+            field: "valorTotal",
+            headerName: "Valor total",
+            flex: 0.2,
+            minWidth: 210,
+            hideable: false,
+            renderHeader: (params) => <strong>{params.colDef.headerName}</strong>,
+          }
+    ] 
+    
+    const getRowId = (row) =>{
+        return row.idproduto;
+    }
+
     return (
         <>
             <div className='relatorio-main'>
@@ -23,8 +81,7 @@ function Relatorio() {
                         <h2 className='text-topRelatorio'>Top produtos mais vendidos</h2>
                     </div>
                     <div className="relatorio-tabelaSup">
-                        {/* {data} */}
-                        DADOS
+                        
                     </div>
                 </div>
                 <div className='relatorio-below'>
@@ -51,8 +108,18 @@ function Relatorio() {
                         )}
                     </div>
                     <div className='relatorio-tabelaInf'>
-                        {/* {data} */}
-                        {message}
+                    <DataGrid
+                            columns={colunmRelatorio}
+                            rows={data}
+                            getRowId={getRowId}
+                            initialState={{
+                                pagination: {
+                                paginationModel: { page: 0, pageSize: 5 },
+                                },
+                                }}
+                            pageSizeOptions={[5, 10]}
+                            localeText={localePTBR}
+                        />
                     </div>
                 </div>
             </div>
